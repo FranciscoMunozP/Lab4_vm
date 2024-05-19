@@ -8,12 +8,12 @@ RUN go mod download
 
 COPY . .
 
-RUN go build -o name ./namenode
+RUN go build -o banco ./Bank
 
 FROM debian:buster-slim
 
-COPY --from=builder /app/name /app/name
+COPY --from=builder /app/banco /app/banco
 
-EXPOSE 50052
+EXPOSE 50054
 
-ENTRYPOINT ["/app/name"]
+ENTRYPOINT ["/app/banco"]
