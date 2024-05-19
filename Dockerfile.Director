@@ -1,0 +1,18 @@
+FROM golang:1.22.2
+
+WORKDIR /director
+
+COPY go.mod go.sum ./
+
+RUN go mod download
+
+COPY director/Director.go ./
+
+RUN go get github.com/FranciscoMunozP/Lab4Proto
+
+EXPOSE 50053
+EXPOSE 5672
+
+RUN go build -o Director_bin
+
+ENTRYPOINT ["./Director_bin"]

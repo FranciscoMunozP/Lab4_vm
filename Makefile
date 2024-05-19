@@ -1,24 +1,20 @@
+RabittMQ:
+	sudo docker pull rabbitmq
+	sudo docker run -d --name rabbitmq --network mynetwork -p 15672:15672 -p 5672:5672 rabbitmq:latest
+
 network:
 	sudo docker network create mynetwork
 
-docker-DataNode1:
-	sudo docker build -f Dockerfile.Datanode-1 . -t datanode-1:latest
-	sudo docker run --rm --name Datanode-1 -p 50052:50052 datanode-1:latest
+docker-Director:
+	sudo docker build -f Dockerfile.Director . -t director:latest
+	sudo docker run -d --name director --network mynetwork -p 50051:50051 director:latest
 
-docker-DataNode2:
-	sudo docker build -f Dockerfile.Datanode-2 . -t datanode2:latest
-	sudo docker run --rm --name Datanode-2 -p 50053:50053 datanode2:latest
-
-docker-DataNode3:
-	sudo docker build -f Dockerfile.Datanode-2 . -t datanode2:latest
-	sudo docker run --rm --name Datanode-2 -p 50053:50053 datanode2:latest
 
 clean:
-	sudo docker network rm mynetwork
-	rm -f ./datanode1/*.txt
-	rm -f ./datanode2/*.txt
-	rm -f ./datanode3/*.txt
+	# sudo docker network rm mynetwork
+	# sudo docker stop rabbitmq
+	# sudo docker rm rabbitmq
 
 
-start-all: clean network docker-DataNode1 docker-DataNode3 docker-DataNode3
+start-all: clean network RabittMQ docker-Director
 	
