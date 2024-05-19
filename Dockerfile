@@ -8,12 +8,12 @@ RUN go mod download
 
 COPY . .
 
-RUN go build -o director ./director
+RUN go build -o name ./namenode
 
 FROM debian:buster-slim
 
-COPY --from=builder /app/director /app/director
+COPY --from=builder /app/name /app/name
 
-EXPOSE 50051
+EXPOSE 50052
 
-ENTRYPOINT ["/app/director"]
+ENTRYPOINT ["/app/name"]
