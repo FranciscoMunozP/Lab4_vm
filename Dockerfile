@@ -8,12 +8,12 @@ RUN go mod download
 
 COPY . .
 
-RUN go build -o banco ./Bank
+RUN go build -o datanode ./datanode
 
 FROM debian:buster-slim
 
-COPY --from=builder /app/banco /app/banco
+COPY --from=builder /app/datanode /app/datanode
 
-EXPOSE 50054
+EXPOSE 50053
 
-ENTRYPOINT ["/app/banco"]
+ENTRYPOINT ["/app/datanode"]
