@@ -1,6 +1,6 @@
 module root
 
-go 1.18.1
+go 1.18
 
 require (
 	github.com/golang/protobuf v1.5.4 // indirect
