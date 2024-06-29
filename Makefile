@@ -1,10 +1,10 @@
 # Nombres de los binarios a generar
-JETH_BIN=bin/Jeth
-SERVER1_BIN=bin/server1
+CAPITAN_BIN=bin/Capitan
+SERVER2_BIN=bin/server2
 
 # Directorios fuente
-JETH_SRC_DIR=Jeth
-SERVER1_SRC_DIR=server1
+CAPITAN_SRC_DIR=capitan
+SERVER2_SRC_DIR=server2
 
 # Variables de configuración de Go
 GO=go
@@ -14,28 +14,28 @@ GO_FLAGS=
 all: build
 
 # Construir los binarios
-build: build-Jeth build-server1
+build: build-capitan build-server2
 
-build-Jeth:
-	@echo "Compilando Jeth..."
+build-capitan:
+	@echo "Compilando capitan..."
 	mkdir -p bin
-	$(GO) build $(GO_FLAGS) -o $(JETH_BIN) $(JETH_SRC_DIR)/Jeth.go
+	$(GO) build $(GO_FLAGS) -o $(CAPITAN_BIN) $(CAPITAN_SRC_DIR)/capitan.go
 
-build-server1:
-	@echo "Compilando server1..."
+build-server2:
+	@echo "Compilando server2..."
 	mkdir -p bin
-	$(GO) build $(GO_FLAGS) -o $(SERVER1_BIN) $(SERVER1_SRC_DIR)/server1.go
+	$(GO) build $(GO_FLAGS) -o $(SERVER2_BIN) $(SERVER2_SRC_DIR)/server2.go
 
 # Ejecutar los binarios en nuevas ventanas de terminal
-run: run-Jeth run-server1
+run: run-capitan run-server2
 
-run-Jeth:
-	@echo "Ejecutando Jeth en una nueva ventana de terminal..."
-	gnome-terminal -- bash -c "$(PWD)/$(JETH_BIN); exec bash"
+run-capitan:
+	@echo "Ejecutando capitan en una nueva ventana de terminal..."
+	gnome-terminal -- bash -c "$(PWD)/$(CAPITAN_BIN); exec bash"
 
-run-server1:
-	@echo "Ejecutando server1 en una nueva ventana de terminal..."
-	gnome-terminal -- bash -c "$(PWD)/$(SERVER1_BIN); exec bash"
+run-server2:
+	@echo "Ejecutando server2 en una nueva ventana de terminal..."
+	gnome-terminal -- bash -c "$(PWD)/$(SERVER2_BIN); exec bash"
 
 # Limpiar archivos generados
 clean:
@@ -46,12 +46,12 @@ clean:
 help:
 	@echo "Comandos disponibles:"
 	@echo "  make build        - Construir todos los binarios"
-	@echo "  make build-Jeth - Construir el binario de Jeth"
-	@echo "  make build-server1- Construir el binario de server1"
+	@echo "  make build-capitan - Construir el binario de capitan"
+	@echo "  make build-server2- Construir el binario de server2"
 	@echo "  make run          - Ejecutar todos los binarios en nuevas ventanas de terminal"
-	@echo "  make run-Jeth   - Ejecutar Jeth en una nueva ventana de terminal"
-	@echo "  make run-server1  - Ejecutar server1 en una nueva ventana de terminal"
+	@echo "  make run-capitan   - Ejecutar capitan en una nueva ventana de terminal"
+	@echo "  make run-server2  - Ejecutar server2 en una nueva ventana de terminal"
 	@echo "  make clean        - Limpiar binarios generados"
 	@echo "  make help         - Mostrar este mensaje de ayuda"
 
-.PHONY: all build build-Jeth build-server1 run run-Jeth run-server1 clean help
+.PHONY: all build build-capitan build-server2 run run-capitan run-server2 clean help
