@@ -1,9 +1,8 @@
 module root
 
-go 1.23
+go 1.18.1
 
 require (
-	github.com/FranciscoMunozP/Lab5_proto v0.0.0-20240629014140-2bccc6469ddd // direct
 	github.com/golang/protobuf v1.5.4 // indirect
 	golang.org/x/net v0.22.0 // indirect
 	golang.org/x/sys v0.18.0 // indirect
