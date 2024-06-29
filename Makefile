@@ -1,10 +1,10 @@
 # Nombres de los binarios a generar
-MALKOR_BIN=bin/Malkor
-SERVER0_BIN=bin/server0
+JETH_BIN=bin/Jeth
+SERVER1_BIN=bin/server1
 
 # Directorios fuente
-MALKOR_SRC_DIR=Malkor
-SERVER0_SRC_DIR=server0
+JETH_SRC_DIR=Jeth
+SERVER1_SRC_DIR=server1
 
 # Variables de configuración de Go
 GO=go
@@ -14,28 +14,28 @@ GO_FLAGS=
 all: build
 
 # Construir los binarios
-build: build-malkor build-server0
+build: build-Jeth build-server1
 
-build-malkor:
-	@echo "Compilando Malkor..."
+build-Jeth:
+	@echo "Compilando Jeth..."
 	mkdir -p bin
-	$(GO) build $(GO_FLAGS) -o $(MALKOR_BIN) $(MALKOR_SRC_DIR)/Malkor.go
+	$(GO) build $(GO_FLAGS) -o $(JETH_BIN) $(JETH_SRC_DIR)/Jeth.go
 
-build-server0:
-	@echo "Compilando server0..."
+build-server1:
+	@echo "Compilando server1..."
 	mkdir -p bin
-	$(GO) build $(GO_FLAGS) -o $(SERVER0_BIN) $(SERVER0_SRC_DIR)/server0.go
+	$(GO) build $(GO_FLAGS) -o $(SERVER1_BIN) $(SERVER1_SRC_DIR)/server1.go
 
 # Ejecutar los binarios en nuevas ventanas de terminal
-run: run-malkor run-server0
+run: run-Jeth run-server1
 
-run-malkor:
-	@echo "Ejecutando Malkor en una nueva ventana de terminal..."
-	gnome-terminal -- bash -c "$(PWD)/$(MALKOR_BIN); exec bash"
+run-Jeth:
+	@echo "Ejecutando Jeth en una nueva ventana de terminal..."
+	gnome-terminal -- bash -c "$(PWD)/$(JETH_BIN); exec bash"
 
-run-server0:
-	@echo "Ejecutando server0 en una nueva ventana de terminal..."
-	gnome-terminal -- bash -c "$(PWD)/$(SERVER0_BIN); exec bash"
+run-server1:
+	@echo "Ejecutando server1 en una nueva ventana de terminal..."
+	gnome-terminal -- bash -c "$(PWD)/$(SERVER1_BIN); exec bash"
 
 # Limpiar archivos generados
 clean:
@@ -46,12 +46,12 @@ clean:
 help:
 	@echo "Comandos disponibles:"
 	@echo "  make build        - Construir todos los binarios"
-	@echo "  make build-malkor - Construir el binario de Malkor"
-	@echo "  make build-server0- Construir el binario de server0"
+	@echo "  make build-Jeth - Construir el binario de Jeth"
+	@echo "  make build-server1- Construir el binario de server1"
 	@echo "  make run          - Ejecutar todos los binarios en nuevas ventanas de terminal"
-	@echo "  make run-malkor   - Ejecutar Malkor en una nueva ventana de terminal"
-	@echo "  make run-server0  - Ejecutar server0 en una nueva ventana de terminal"
+	@echo "  make run-Jeth   - Ejecutar Jeth en una nueva ventana de terminal"
+	@echo "  make run-server1  - Ejecutar server1 en una nueva ventana de terminal"
 	@echo "  make clean        - Limpiar binarios generados"
 	@echo "  make help         - Mostrar este mensaje de ayuda"
 
-.PHONY: all build build-malkor build-server0 run run-malkor run-server0 clean help
+.PHONY: all build build-Jeth build-server1 run run-Jeth run-server1 clean help
